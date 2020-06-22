@@ -1,5 +1,6 @@
 """Very simple tic tac toe game."""
 
+
 def print_board(board):
     """Prints in the terminal the board."""
     print('  | 1 | 2 | 3')
@@ -7,25 +8,29 @@ def print_board(board):
         print('-'*14)
         print(str(row + 1), '|', ' | '.join(board[row]))
 
+
 def input2list(input_text):
     """Converts the input from text to a list of coordinates."""
     input_list = input_text.strip().split(',')
     input_list = [int(i) - 1 for i in input_list]
     for val in input_list:
-        if not val in range(3):
+        if val not in range(3):
             raise ValueError
     return input_list
+
 
 def add_mark(board, mark, player):
     """Adds a the player in the mark coordinate of the board."""
     board[mark[0]][mark[1]] = player
     return board
 
+
 def valid_mark(board, mark):
     """Checks if the new mark point is valid."""
     if board[mark[0]][mark[1]] == ' ':
         return True
     return False
+
 
 def check_win(board):
     """Checks if the player already won."""
@@ -44,13 +49,15 @@ def check_win(board):
     if check_line([board[0][2], board[1][1], board[2][0]]):
         return True
     return False
-    
+
+
 def check_line(line):
     """Checks one line of the board looking for a winner."""
     if line[0] == line[1] and line[1] == line[2]:
         if line[0] != ' ':
             return True
     return False
+
 
 def transpose(board):
     """Returns a transposed board."""
@@ -61,6 +68,7 @@ def transpose(board):
             row.append(board[j][i])
         transposed_board.append(row)
     return transposed_board
+
 
 def get_user_input(board):
     """Gets the user input and handles the errors."""
@@ -75,9 +83,11 @@ def get_user_input(board):
             print('Invalid mark, try again')
     return mark
 
+
 def clear_console():
     """prints vertical space to 'clear console'."""
     print('\n'*60)
+
 
 def print_congratulations():
     print()
@@ -85,7 +95,6 @@ def print_congratulations():
     print('* Congratulations, you win! *')
     print('*'*29)
     print()
-
 
 
 def main():
